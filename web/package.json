@@ -2,5 +2,9 @@
   "name": "my-notes",
   "version": "0.0.1",
   "author": "",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "serve": "^2.1.2",
+    "webpack": "^1.14.0"
+  }
 }
