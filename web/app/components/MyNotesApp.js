@@ -3,8 +3,8 @@ import React, { Component } from 'react';
 
 const spanStyle = { paddingRight: '10px' };
 
-// AENDERUNG : import des bildes
-const image = require('../images/inline/mynotes.png');
+// AENDERUNG : import des bildes aus Verzeichnis files
+import image from '../images/files/mynotes.png';
 
 class MyNotesApp extends Component {
 

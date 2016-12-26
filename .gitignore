@@ -7,3 +7,4 @@ web/public/*.svg
 web/public/*.ttf
 web/public/*.eot
 web/public/*.woff
+web/public/images/

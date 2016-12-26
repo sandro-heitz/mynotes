@@ -6,8 +6,10 @@ const BUILD_DIR = path.resolve(__dirname, 'public');
 const APP_DIR = path.resolve(__dirname, 'app');
 const BOOTSTRAP_DIR = path.resolve(__dirname, './node_modules/bootstrap');
 const CSS_DIRS = [ APP_DIR, BOOTSTRAP_DIR ];
-// AENDERUNG
 const INLINE_IMAGES_DIR = path.resolve(__dirname, 'app/images/inline');
+// AENDERUNG
+const STD_IMAGES_DIR = path.resolve(__dirname, 'app/images/files');
+
 
 let config = {
     entry: APP_DIR + '/index.js',
@@ -17,7 +19,8 @@ let config = {
     },
     module: {
         loaders: [
-            // AENDERUNG : bilder die wir inline haben wollen
+            // AENDERUNG : bilder die wir nicht inline haben wollen
+            { test: /\.(jpg|png)$/, loader: 'file-loader?name=./images/[name].[hash].[ext]', include: STD_IMAGES_DIR },
             { test: /\.(jpg|png)$/, loader: 'url-loader?limit=25000', include: INLINE_IMAGES_DIR },
             { test: /\.css$/, include: CSS_DIRS, loader: "style-loader!css-loader" },
             {test: /\.eot(\?v=\d+\.\d+\.\d+)?$/, include: CSS_DIRS, loader: "file" },
