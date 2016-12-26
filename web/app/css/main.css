@@ -7,3 +7,8 @@ body {
     border-bottom: 3px solid gray;
 }
 
+/* AENDUNG : ein Hintergrundbild */
+.main {
+    background-image: url('../images/inline/background.png');
+}
+
