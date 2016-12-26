@@ -2,3 +2,8 @@ web/node_modules/
 web/.idea/
 web/public/bundle.js
 web/public/bundle.js.map
+web/public/*.woff2
+web/public/*.svg
+web/public/*.ttf
+web/public/*.eot
+web/public/*.woff
