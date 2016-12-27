@@ -4,8 +4,8 @@
   "author": "",
   "license": "MIT",
   "devDependencies": {
-    "serve": "^2.1.2",
-    "webpack": "^1.14.0"
+    "serve": "2.1.2",
+    "webpack": "1.14.0"
   },
   "scripts": {
     "watch": "webpack -d --watch --progress",
