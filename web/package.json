@@ -4,7 +4,6 @@
   "author": "",
   "license": "MIT",
   "devDependencies": {
-    "serve": "^2.1.2",
     "webpack": "^1.14.0"
   },
   "scripts": {
