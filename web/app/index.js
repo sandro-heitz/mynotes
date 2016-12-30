@@ -11,7 +11,7 @@ import { initI18N } from './i18n/i18n.js';
 import MyNotesApp from './components/MyNotesApp.js';
 
 // AENDERUNG i18n initialisieren
-initI18N();
+initI18N(window.location.href);
 
 render(
     <MyNotesApp />,
