@@ -10,6 +10,7 @@
     "babel-preset-react": "6.16.0",
     "chai": "3.5.0",
     "css-loader": "0.26.1",
+    "expect": "1.20.2",
     "file-loader": "0.9.0",
     "mocha": "3.2.0",
     "serve": "2.1.2",
@@ -20,7 +21,8 @@
   "scripts": {
     "watch": "webpack -d --watch --progress",
     "build": "webpack",
-    "serve": "serve ./public"
+    "serve": "serve ./public",
+    "tests": "mocha --compilers js:babel-core/register"
   },
   "dependencies": {
     "bootstrap": "3.3.7",
