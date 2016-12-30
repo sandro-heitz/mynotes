@@ -1,10 +1,11 @@
 
 import React, { Component } from 'react';
 
-const spanStyle = { paddingRight: '10px' };
+import { I18n } from 'react-i18nify';
 
-// AENDERUNG : import des bildes aus Verzeichnis files
 import image from '../images/files/mynotes.png';
+
+const spanStyle = { paddingRight: '10px' };
 
 class MyNotesApp extends Component {
 
@@ -15,7 +16,7 @@ class MyNotesApp extends Component {
             <div className="row">
                 <div className="col-xs-12 col-sm-2"><h1>{/* AENDERUNG : das Bild */}<img src={image}></img></h1></div>
                 <div className="col-xs-12 col-sm-10">
-                    <h1>MyNotes</h1>
+                    <h1>{I18n.t('title')}</h1>
                     {/* AENDERUNG : glyphicon und style attribute */}
                     <p>
                         <span className="glyphicon glyphicon-asterisk" aria-hidden="true" style={spanStyle}></span>
