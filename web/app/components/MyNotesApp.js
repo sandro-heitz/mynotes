@@ -17,9 +17,9 @@ class MyNotesApp extends Component {
                     <h1>{I18n.t('title')}</h1>
                     <p>
                         <span className="glyphicon glyphicon-asterisk" aria-hidden="true" style={spanStyle}></span>
-                        Was Sie erledigt haben und was Sie noch erledigen müssen!
+                        {I18n.t('info')}
                     </p>
-                    <p>Grossartig - naja</p>
+                    <p>{I18n.t('great')}</p>
                 </div>
             </div>
         </div>);
