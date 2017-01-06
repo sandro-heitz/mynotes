@@ -1,14 +1,2 @@
 
-body {
-    margin: 30px;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    border-top: 3px solid gray;
-    border-bottom: 3px solid gray;
-}
-
-/* AENDUNG : ein Hintergrundbild */
-.main {
-    background-image: url('../images/inline/background.png');
-}
 
