@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 
 class NoteForm extends Component {
     render() {
-        return (<div>NoteForm</div>);
+        return (<div className="note-form">NoteForm</div>);
     }
 }
 

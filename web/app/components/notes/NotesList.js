@@ -5,7 +5,7 @@ import NoteView from './NoteView.js';
 
 class NotesList extends Component {
     render() {
-        return (<div><NoteView /><NoteView/></div>);
+        return (<div className="notes-list"><NoteView /><NoteView/></div>);
     }
 }
 

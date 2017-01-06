@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 
 class NoteView extends Component {
     render() {
-        return (<div>NoteView</div>);
+        return (<div className="note-view">NoteView</div>);
     }
 }
 

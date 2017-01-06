@@ -1,2 +1,10 @@
 
+.notes-list {
+    border-top: 1px solid gainsboro;
+}
+.note-view, .note-form {
+    border: 1px solid gainsboro;
+    margin: 5px;
+    padding: 5px;
+}
 
