@@ -2,8 +2,14 @@
 // deutsch
 let resources = {
     title: 'Meine Notizen',
-    info: 'Was Sie erledigt haben und was Sie noch erledigen müssen!',
-    great: 'Grossartig - naja'
+    common: {
+        create: 'Erzeugen',
+        cancel: 'Abbrechen'
+    },
+    form: {
+        title: 'Titel',
+        description: 'Beschreibung'
+    }
 };
 
 export default resources;

@@ -7,4 +7,6 @@
     margin: 5px;
     padding: 5px;
 }
-
+.btn-row .btn + .btn {
+    margin-left: 1rem;
+}
