@@ -2,13 +2,41 @@
 import React, { Component } from 'react';
 import { I18n } from 'react-i18nify';
 
+const INITIAL_STATE = {ok: false, changed: false };
+
 class NoteForm extends Component {
+    constructor() {
+        super();
+        this.state = INITIAL_STATE;
+    }
     componentDidMount() {
-        this._title.focus();
+        this._focus();
     }
     _onChange = (e) => {
-        // e.target.value
-        console.log(this);
+        e.preventDefault();
+        let ok = this._title.value && this._description.value
+            && this._title.value.trim() && this._description.value.trim();
+        let changed = this._title.value || this._description.value;
+        this.setState({ok: ok, changed: changed});
+    }
+    _handleCancel = (e) => {
+        e.preventDefault();
+        this._reset();
+        this._focus();
+    }
+    _handleOk = (e) => {
+        e.preventDefault();
+        this._reset();
+        this._focus();
+    }
+    _reset() {
+        this._title.value = '';
+        this._description.value = '';
+        this.state = INITIAL_STATE;
+        this.forceUpdate();
+    }
+    _focus() {
+        this._title.focus();
     }
     render() {
         return (<div className="note-form">
@@ -22,11 +50,20 @@ class NoteForm extends Component {
                 </div>
                 <div className="form-group">
                     <label>{I18n.t('form.description')}</label>
-                    <textarea className="form-control" rows="5"/>
+                    <textarea ref={node => { this._description = node}}
+                              onChange={this._onChange}
+                              className="form-control"
+                              rows="5"/>
                 </div>
                 <div className="btn-row">
-                    <button type="button" className="btn btn-default">{I18n.t('common.cancel')}</button>
-                    <button type="button" className="btn btn-default">{I18n.t('common.create')}</button>
+                    <button type="button"
+                            disabled={!this.state.changed}
+                            onClick={this._handleCancel}
+                            className="btn btn-default">{I18n.t('common.cancel')}</button>
+                    <button type="button"
+                            onClick={this._handleOk}
+                            disabled={!this.state.ok}
+                            className="btn btn-default">{I18n.t('common.create')}</button>
                 </div>
             </form>
         </div>);
