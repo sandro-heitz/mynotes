@@ -3,16 +3,24 @@ import React, { Component } from 'react';
 import NoteForm from './NoteForm.js';
 import NotesList from './NotesList.js';
 
-const notes = [
-    { title: 'Titeln eins', description: 'Beschreibung eins ...', id: 1 },
-    { title: 'Titeln zwei', description: 'Beschreibung zwei ...', id: 2}
-];
-
 class NotesPanel extends Component {
+    constructor() {
+        super();
+        let notes = [];
+        let id = 0;
+        this.state = { notes };
+        this.priv = { id };
+    }
+    addNote = (n) => {
+        this.priv.id++;
+        n.id = this.priv.id;
+        let notes = [n, ...this.state.notes];
+        this.setState({ notes });
+    }
     render() {
         return (<div>
-            <NoteForm />
-            <NotesList notes={notes} />
+            <NoteForm addNote={this.addNote} />
+            <NotesList notes={this.state.notes} />
         </div>);
     }
 }

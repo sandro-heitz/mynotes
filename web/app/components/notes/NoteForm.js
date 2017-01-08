@@ -26,8 +26,10 @@ class NoteForm extends Component {
     }
     _handleOk = (e) => {
         e.preventDefault();
+        let note = { title: this._title.value, description: this._description.value };
         this._reset();
         this._focus();
+        this.props.addNote(note);
     }
     _reset() {
         this._title.value = '';
