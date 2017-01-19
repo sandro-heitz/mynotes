@@ -4,13 +4,9 @@ import mainStyles from './css/main.css';
 
 import React from 'react';
 import { render } from 'react-dom';
+import { initI18N } from './i18n/i18n';
+import MyNotesApp from './components/MyNotesApp';
 
-// AENDERUNG i18n
-import { initI18N } from './i18n/i18n.js';
-
-import MyNotesApp from './components/MyNotesApp.js';
-
-// AENDERUNG i18n initialisieren
 initI18N(window.location.href);
 
 render(

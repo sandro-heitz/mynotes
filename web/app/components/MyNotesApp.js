@@ -1,8 +1,8 @@
 
 import React, { Component } from 'react';
-import HeaderPanel from './HeaderPanel.js';
-import ImagePanel from './ImagePanel.js';
-import NotesPanel from './notes/NotesPanel.js';
+import HeaderPanel from './HeaderPanel';
+import ImagePanel from './ImagePanel';
+import NotesPanel from './notes/NotesPanel';
 
 class MyNotesApp extends Component {
 

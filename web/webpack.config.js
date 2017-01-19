@@ -7,11 +7,14 @@ const APP_DIR = path.resolve(__dirname, 'app');
 const BOOTSTRAP_DIR = path.resolve(__dirname, './node_modules/bootstrap');
 const CSS_DIRS = [ APP_DIR, BOOTSTRAP_DIR ];
 const INLINE_IMAGES_DIR = path.resolve(__dirname, 'app/images/inline');
-// AENDERUNG
 const STD_IMAGES_DIR = path.resolve(__dirname, 'app/images/files');
 
 
 let config = {
+    resolve: {
+        // sicherstellen dass Webpack imported Dateien entsprechend sucht und auch finden kann
+        extensions: ['', '.js', '.jsx']
+    },
     entry: APP_DIR + '/index.js',
     output: {
         path: BUILD_DIR,

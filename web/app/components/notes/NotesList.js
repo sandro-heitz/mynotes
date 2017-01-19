@@ -1,7 +1,7 @@
 
 import React, { Component } from 'react';
 
-import NoteView from './NoteView.js';
+import NoteView from './NoteView';
 
 class NotesList extends Component {
     render() {
