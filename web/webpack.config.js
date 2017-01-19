@@ -15,7 +15,17 @@ let config = {
         // sicherstellen dass Webpack imported Dateien entsprechend sucht und auch finden kann
         extensions: ['', '.js', '.jsx']
     },
-    entry: APP_DIR + '/index.js',
+    plugins: [
+        new webpack.optimize.OccurenceOrderPlugin(),
+        new webpack.HotModuleReplacementPlugin(),
+        new webpack.NoErrorsPlugin()
+    ],
+    entry: [
+        'webpack-dev-server/client?http://localhost:3000',
+        'webpack/hot/only-dev-server',
+        'react-hot-loader/patch',
+        APP_DIR + '/index.js'
+    ],
     output: {
         path: BUILD_DIR,
         filename:  'bundle.js'
@@ -36,6 +46,29 @@ let config = {
                 loader: 'babel'
             }
         ]
+    },
+    devtool: 'source-map',
+    devServer: {
+        hot: true,
+        port: '3000',
+        host: 'localhost',
+        contentBase: 'public',
+        historyApiFallback: true,
+        // It suppress error shown in console, so it has to be set to false.
+        quiet: false,
+        // It suppress everything except error, so it has to be set to false as well
+        // to see success build.
+        noInfo: false,
+        stats: {
+            // Config for minimal console.log mess.
+            assets: false,
+            colors: true,
+            version: false,
+            hash: false,
+            timings: false,
+            chunks: false,
+            chunkModules: false
+        }
     }
 };
 
