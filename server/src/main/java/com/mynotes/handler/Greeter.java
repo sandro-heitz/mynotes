@@ -13,7 +13,7 @@ public class Greeter {
         Date date = new Date();
         final SimpleDateFormat sdf = new SimpleDateFormat("EEE, MMM d, yyyy hh:mm:ss a z");
         sdf.setTimeZone(TimeZone.getTimeZone("UTC"));
-        return "Hello, world!\n\nTime: " + sdf.format(date);
+        return "Hello, world!\n\nZeit: " + sdf.format(date);
     }
 
 }

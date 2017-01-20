@@ -11,6 +11,8 @@ import com.mynotes.filter.MyFilter;
 import com.mynotes.handler.Greeter;
 import com.mynotes.servlet.GreetingServlet;
 
+import at.aberger.jerseyguice.config.RestServletModule;
+
 @WebListener
 public class MynotesGuiceListener extends GuiceServletContextListener  {
 
@@ -30,9 +32,16 @@ public class MynotesGuiceListener extends GuiceServletContextListener  {
         }
     }
 
+    class MyRestServletModulen extends RestServletModule {
+        @Override
+        protected void configureServlets() {
+            rest("/rest/*").packages("com.mynotes.resouce");
+        }
+    }
+
     @Override
     protected Injector getInjector() {
-        return Guice.createInjector(new MyFilterModule(), new MyServletModule());
+        return Guice.createInjector(new MyFilterModule(), new MyServletModule(), new MyRestServletModulen());
     }
 
 }
