@@ -11,9 +11,7 @@ import com.mynotes.filter.MyFilter;
 import com.mynotes.handler.Greeter;
 import com.mynotes.servlet.GreetingServlet;
 
-// http://stackoverflow.com/questions/17285388/how-to-use-guice-servlet-with-jersey-2-0
-// https://hk2.java.net/guice-bridge/
-// http://www.aberger.at/en/blog/design/2016/11/17/bridge-jersey2-guice.html
+import at.aberger.jerseyguice.config.RestServletModule;
 
 @WebListener
 public class MynotesGuiceListener extends GuiceServletContextListener  {
@@ -34,9 +32,16 @@ public class MynotesGuiceListener extends GuiceServletContextListener  {
         }
     }
 
+    class MyRestServletModulen extends RestServletModule {
+        @Override
+        protected void configureServlets() {
+            rest("/rest/*").packages("com.mynotes.resouce");
+        }
+    }
+
     @Override
     protected Injector getInjector() {
-        return Guice.createInjector(new MyFilterModule(), new MyServletModule());
+        return Guice.createInjector(new MyFilterModule(), new MyServletModule(), new MyRestServletModulen());
     }
 
 }
