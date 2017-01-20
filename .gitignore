@@ -8,3 +8,8 @@ web/public/*.ttf
 web/public/*.eot
 web/public/*.woff
 web/public/images/
+mynotes-eclipse-workspace/
+server/.settings/
+server/.classpath
+server/.gradle/
+server/.project

@@ -1,0 +1,1 @@
+web.xml ist nicht notwendig; da wir @WebFilter und @WebListener nutzen!
