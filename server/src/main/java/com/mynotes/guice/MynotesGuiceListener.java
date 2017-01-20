@@ -11,10 +11,6 @@ import com.mynotes.filter.MyFilter;
 import com.mynotes.handler.Greeter;
 import com.mynotes.servlet.GreetingServlet;
 
-// http://stackoverflow.com/questions/17285388/how-to-use-guice-servlet-with-jersey-2-0
-// https://hk2.java.net/guice-bridge/
-// http://www.aberger.at/en/blog/design/2016/11/17/bridge-jersey2-guice.html
-
 @WebListener
 public class MynotesGuiceListener extends GuiceServletContextListener  {
 
