@@ -9,7 +9,7 @@ class NoteView extends Component {
         desc = desc.split('\n').join('<br />');
         //
         return (<div className="note-view">
-            <h4>{this.props.note.title}</h4>
+            <h3>{this.props.note.title}</h3>
             <div className="row">
                 <div className="hidden-xs col-sm-4">
                     {I18n.t('form.description')}

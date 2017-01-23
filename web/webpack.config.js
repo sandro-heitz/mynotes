@@ -66,8 +66,13 @@ let config = {
             version: false,
             hash: false,
             timings: false,
-            chunks: false,
+            chunks: true,
             chunkModules: false
+        },
+        proxy: {
+            '/rest': {
+                target: 'http://localhost:8080/server',
+            }
         }
     }
 };

@@ -16,6 +16,7 @@ public class NotesCache {
         ret.add(createNote(2L, "2) zwei", "beschreibung zwei"));
         ret.add(createNote(3L, "3) drei", "beschreibung drei"));
         ret.add(createNote(4L, "4) vier", "beschreibung vier\n hoho"));
+        ret.add(createNote(5L, "5) fuenf", "beschreibung fuenf\n1\n2\n3\n4\nletzte zeile"));
         return ret;
     }
 
