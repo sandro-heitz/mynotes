@@ -2,26 +2,8 @@
 import React, { Component } from 'react';
 import NoteForm from './NoteForm';
 import NotesList from './NotesList';
+import { makeCancelable } from '../../common/utils';
 
-const makeCancelable = (promise) => {
-    let hasCanceled_ = false;
-
-    const wrappedPromise = new Promise((resolve, reject) => {
-        promise.then((val) =>
-            hasCanceled_ ? reject({isCanceled: true}) : resolve(val)
-        );
-        promise.catch((error) =>
-            hasCanceled_ ? reject({isCanceled: true}) : reject(error)
-        );
-    });
-
-    return {
-        promise: wrappedPromise,
-        cancel() {
-            hasCanceled_ = true;
-        },
-    };
-};
 
 class NotesPanel extends Component {
     constructor() {
@@ -33,12 +15,13 @@ class NotesPanel extends Component {
     }
     componentDidMount() {
         let self = this;
-        fetch('/rest/notes', {
-        // fetch('/notes.json', {
+        this.priv.fetchCall = makeCancelable(fetch('/rest/notes', {
             method: 'get'
-        }).then(function(response) {
+        }));
+        this.priv.fetchCall.promise.then(function(response) {
             if (response.status == 200) {
-                response.json().then(notes => {
+                self.priv.jsonCall = makeCancelable(response.json());
+                self.priv.jsonCall.promise.then(notes => {
                     notes.forEach(n => self.priv.id = Math.max(n.id, self.priv.id));
                     self.setState({notes});
                 });
@@ -48,6 +31,17 @@ class NotesPanel extends Component {
         }).catch(function(err) {
             console.log(err);
         });
+    }
+    componentWillUnmount() {
+        cancelAll();
+    }
+    cancelAll = () => {
+        if (this.priv.fetchCall) {
+            this.priv.fetchCall.cancel();
+        }
+        if (this.priv.jsonCall) {
+            this.priv.jsonCall.cancel();
+        }
     }
     addNote = (n) => {
         this.priv.id++;
