@@ -1,14 +1,26 @@
 
 import React, { Component } from 'react';
-
+import Velocity from 'velocity-animate';
 import { I18n } from 'react-i18nify';
 
 class NoteView extends Component {
+    componentDidMount() {
+        Velocity(this.refs.noteView,
+            {  opacity: 1, backgroundColorGreen: 255, backgroundColorRed: 255, backgroundColorBlue: 255 },
+            { duration: 1000  } );
+    }
+    componentWillUnmount() {
+        Velocity(this.refs.noteView, "stop", true);
+    }
     render() {
         let desc = this.props.note.description;
         desc = desc.split('\n').join('<br />');
+        let cn = "note-view"
+        if (this.props.note.created) {
+            cn += " note-created";
+        }
         //
-        return (<div className="note-view">
+        return (<div className={cn} ref="noteView">
             <h3>{this.props.note.title}</h3>
             <div className="row">
                 <div className="hidden-xs col-sm-4">

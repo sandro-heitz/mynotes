@@ -7,6 +7,10 @@
     margin: 5px;
     padding: 5px;
 }
+.note-created {
+    opacity: 0;
+    background-color: #FF8533;
+}
 .btn-row .btn + .btn {
     margin-left: 1rem;
 }
