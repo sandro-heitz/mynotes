@@ -15,12 +15,9 @@ class NoteView extends Component {
     render() {
         let desc = this.props.note.description;
         desc = desc.split('\n').join('<br />');
-        let cn = "note-view"
-        if (this.props.note.created) {
-            cn += " note-created";
-        }
+        let style = { opacity: '0', backgroundColor: '#FF8533'};
         //
-        return (<div className={cn} ref="noteView">
+        return (<div className="note-view" ref="noteView" style={style}>
             <h3>{this.props.note.title}</h3>
             <div className="row">
                 <div className="hidden-xs col-sm-4">
