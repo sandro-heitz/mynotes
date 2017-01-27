@@ -21,6 +21,7 @@ let config = {
         new webpack.NoErrorsPlugin()
     ],
     entry: [
+        'whatwg-fetch',
         'webpack-dev-server/client?http://localhost:3000',
         'webpack/hot/only-dev-server',
         'react-hot-loader/patch',

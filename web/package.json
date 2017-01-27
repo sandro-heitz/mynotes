@@ -30,9 +30,11 @@
   },
   "dependencies": {
     "bootstrap": "3.3.7",
+    "es6-promise": "^4.0.5",
     "react": "15.4.1",
     "react-dom": "15.4.1",
     "react-i18nify": "1.7.3",
-    "velocity-animate": "^1.4.0"
+    "velocity-animate": "^1.4.0",
+    "whatwg-fetch": "^2.0.2"
   }
 }
