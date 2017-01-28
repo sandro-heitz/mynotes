@@ -9,6 +9,9 @@ const CSS_DIRS = [ APP_DIR, BOOTSTRAP_DIR ];
 const INLINE_IMAGES_DIR = path.resolve(__dirname, 'app/images/inline');
 const STD_IMAGES_DIR = path.resolve(__dirname, 'app/images/files');
 
+const server = (process.env.server ? process.env.server : 'http://localhost:8080/server');
+
+console.log("arg server [" + server + "]");
 
 let config = {
     resolve: {
@@ -72,7 +75,7 @@ let config = {
         },
         proxy: {
             '/rest': {
-                target: 'http://localhost:8080/server',
+                target: server,
             }
         }
     }

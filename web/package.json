@@ -26,7 +26,8 @@
     "build": "webpack",
     "serve": "serve ./public",
     "tests": "mocha --compilers js:babel-core/register",
-    "dev": "webpack-dev-server"
+    "dev": "webpack-dev-server",
+    "devext": "set server=http://localhost:8080/mynotes&& webpack-dev-server"
   },
   "dependencies": {
     "bootstrap": "3.3.7",
