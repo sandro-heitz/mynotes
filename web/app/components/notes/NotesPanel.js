@@ -2,8 +2,7 @@
 import React, { Component } from 'react';
 import NoteForm from './NoteForm';
 import NotesList from './NotesList';
-import { makeCancelable } from '../../common/utils';
-
+import { makeCancelable, createGet } from '../../common/utils';
 
 class NotesPanel extends Component {
     constructor() {
@@ -15,9 +14,7 @@ class NotesPanel extends Component {
     }
     componentDidMount() {
         let self = this;
-        this.priv.fetchCall = makeCancelable(fetch('/rest/notes', {
-            method: 'get'
-        }));
+        this.priv.fetchCall = makeCancelable(createGet('/rest/notes'));
         this.priv.fetchCall.promise.then(function(response) {
             if (response.status == 200) {
                 self.priv.jsonCall = makeCancelable(response.json());

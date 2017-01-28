@@ -48,5 +48,17 @@ const makeCancelable = (promise) => {
     };
 };
 
-export { getParameterByName, toJson, makeCancelable };
+const createGet = (resource) => {
+    let myHeaders = new Headers();
+    myHeaders.append('pragma', 'no-cache');
+    myHeaders.append('cache-control', 'no-cache');
+    let myInit = {
+        method: 'GET',
+        headers: myHeaders,
+    };
+    let myRequest = new Request(resource);
+    return fetch(myRequest, myInit)
+};
+
+export { getParameterByName, toJson, makeCancelable, createGet };
 
