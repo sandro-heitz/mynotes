@@ -15,11 +15,11 @@ let config = {
         // AENDERUNG
         // loaders, die unseren Source-Code transformieren
         // in diesem fall wird babel benutzt um notwendige ES6 transformation vorzunehmen
-        loaders: [
+        rules: [
             {
                 test: /\.js?/,
                 include: APP_DIR,
-                loader: 'babel'
+                use: 'babel-loader'
             }
         ]
     }
