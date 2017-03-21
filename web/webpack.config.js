@@ -18,19 +18,18 @@ let config = {
         filename:  'bundle.js'
     },
     module: {
-        loaders: [
-            // AENDERUNG : bilder die wir nicht inline haben wollen
-            { test: /\.(jpg|png)$/, loader: 'file-loader?name=./images/[name].[hash].[ext]', include: STD_IMAGES_DIR },
-            { test: /\.(jpg|png)$/, loader: 'url-loader?limit=25000', include: INLINE_IMAGES_DIR },
-            { test: /\.css$/, include: CSS_DIRS, loader: "style-loader!css-loader" },
-            {test: /\.eot(\?v=\d+\.\d+\.\d+)?$/, include: CSS_DIRS, loader: "file" },
-            {test: /\.woff(2)?(\?v=\d+\.\d+\.\d+)?$/, include: CSS_DIRS, loader: "url?limit=10000&mimetype=application/font-woff" },
-            {test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/, include: CSS_DIRS, loader: "url?limit=10000&mimetype=application/octet-stream" },
-            {test: /\.svg(\?v=\d+\.\d+\.\d+)?$/, include: CSS_DIRS, loader: "url?limit=10000&mimetype=image/svg+xml" },
+        rules: [
+            {test: /\.(jpg|png)$/, use: 'file-loader?name=./images/[name].[hash].[ext]', include: STD_IMAGES_DIR },
+            {test: /\.(jpg|png)$/, use: 'url-loader?limit=25000', include: INLINE_IMAGES_DIR },
+            {test: /\.css$/, include: CSS_DIRS, use: [ "style-loader", "css-loader" ] },
+            {test: /\.eot(\?v=\d+\.\d+\.\d+)?$/, include: CSS_DIRS, use: "file-loader" },
+            {test: /\.woff(2)?(\?v=\d+\.\d+\.\d+)?$/, include: CSS_DIRS, use: "url-loader?limit=10000&mimetype=application/font-woff" },
+            {test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/, include: CSS_DIRS, use: "url-loader?limit=10000&mimetype=application/octet-stream" },
+            {test: /\.svg(\?v=\d+\.\d+\.\d+)?$/, include: CSS_DIRS, use: "url-loader?limit=10000&mimetype=image/svg+xml" },
             {
                 test: /\.js?/,
                 include: APP_DIR,
-                loader: 'babel'
+                loader: 'babel-loader'
             }
         ]
     }
