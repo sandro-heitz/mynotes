@@ -14,7 +14,7 @@ class MyNotesApp extends Component {
                 <span className="glyphicon glyphicon-asterisk" aria-hidden="true" style={spanStyle}></span>
                 Was Sie erledigt haben und was Sie noch erledigen müssen!
             </p>
-            <p>Grossartig - naja</p>
+            <p>Grossartig - naja ...</p>
         </div>);
     }
 }

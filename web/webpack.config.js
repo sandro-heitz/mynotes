@@ -15,18 +15,18 @@ let config = {
         filename:  'bundle.js'
     },
     module: {
-        loaders: [
+        rules: [
             // AENDERUNG : css laden und transformieren
             // AENDERUNG : css und font files laden und transformieren (mit speziellen include Verzeichnissen)
-            { test: /\.css$/, include: CSS_DIRS, loader: "style-loader!css-loader" },
-            {test: /\.eot(\?v=\d+\.\d+\.\d+)?$/, include: CSS_DIRS, loader: "file" },
-            {test: /\.woff(2)?(\?v=\d+\.\d+\.\d+)?$/, include: CSS_DIRS, loader: "url?limit=10000&mimetype=application/font-woff" },
-            {test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/, include: CSS_DIRS, loader: "url?limit=10000&mimetype=application/octet-stream" },
-            {test: /\.svg(\?v=\d+\.\d+\.\d+)?$/, include: CSS_DIRS, loader: "url?limit=10000&mimetype=image/svg+xml" },
+            {test: /\.css$/, include: CSS_DIRS, use: ["style-loader", "css-loader"] },
+            {test: /\.eot(\?v=\d+\.\d+\.\d+)?$/, include: CSS_DIRS, use: "file-loader" },
+            {test: /\.woff(2)?(\?v=\d+\.\d+\.\d+)?$/, include: CSS_DIRS, use: "url-loader?limit=10000&mimetype=application/font-woff" },
+            {test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/, include: CSS_DIRS, use: "url-loader?limit=10000&mimetype=application/octet-stream" },
+            {test: /\.svg(\?v=\d+\.\d+\.\d+)?$/, include: CSS_DIRS, use: "url-loader?limit=10000&mimetype=image/svg+xml" },
             {
                 test: /\.js?/,
                 include: APP_DIR,
-                loader: 'babel'
+                use: 'babel-loader'
             }
         ]
     }
