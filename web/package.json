@@ -4,12 +4,12 @@
   "author": "",
   "license": "MIT",
   "devDependencies": {
-    "serve": "2.1.2",
-    "webpack": "1.14.0"
+    "serve": "5.0.4",
+    "webpack": "2.2.1"
   },
   "scripts": {
     "watch": "webpack -d --watch --progress",
     "build": "webpack",
-    "serve": "serve ./public"
+    "serve": "serve --port 3000 ./public"
   }
 }
