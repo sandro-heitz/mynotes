@@ -15,7 +15,7 @@ class NoteView extends Component {
                     {I18n.t('form.description')}
                 </div>
                 <div className="col-xs-12 col-sm-8">
-                    <p dangerouslySetInnerHTML={{__html: desc}}></p>
+                    <p style={{color: 'red', backgroundColor: '#222', padding: '4px'}} dangerouslySetInnerHTML={{__html: desc}}></p>
                 </div>
             </div>
         </div>);
