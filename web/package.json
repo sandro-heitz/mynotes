@@ -27,10 +27,11 @@
     "webpack-dev-server": "2.4.2"
   },
   "scripts": {
+    "clean": "rm -rf public",
     "watch": "cross-env NODE_ENV=development webpack -d --watch --progress",
     "build": "cross-env NODE_ENV=production webpack",
     "serve": "serve --port 3000 ./public",
-    "tests": "cross-env NODE_ENV=test mocha --compilers js:babel-core/register",
+    "test": "cross-env NODE_ENV=test mocha --compilers js:babel-core/register",
     "dev": "cross-env NODE_ENV=development webpack-dev-server",
     "devext": "cross-env NODE_ENV=development server=http://localhost:8080/mynotes  webpack-dev-server"
   },

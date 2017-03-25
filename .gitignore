@@ -14,3 +14,4 @@ server/.classpath
 server/.gradle/
 server/.project
 web/public/
+web/.gradle/
