@@ -13,3 +13,4 @@ server/.settings/
 server/.classpath
 server/.gradle/
 server/.project
+web/public/
