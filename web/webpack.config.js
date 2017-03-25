@@ -3,6 +3,7 @@ const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 
 const BUILD_DIR = path.resolve(__dirname, 'public');
 const APP_DIR = path.resolve(__dirname, 'app');
@@ -24,6 +25,17 @@ if (process.env.NODE_ENV == 'production') {
             extensions: ['*', '.js', '.jsx']
         },
         plugins: [
+            new webpack.optimize.UglifyJsPlugin({
+                beautify: false,
+                mangle: {
+                    screw_ie8: true,
+                    keep_fnames: true
+                },
+                compress: {
+                    screw_ie8: true
+                },
+                comments: false
+            }),
             new (webpack.optimize.OccurenceOrderPlugin || webpack.optimize.OccurrenceOrderPlugin)(),
             new HtmlWebpackPlugin({
                 hash: false,
@@ -33,7 +45,12 @@ if (process.env.NODE_ENV == 'production') {
                 inject: 'body'
             }),
             new ExtractTextPlugin("styles.[contenthash].css"),
-
+            new OptimizeCssAssetsPlugin({
+                //assetNameRegExp: /\.optimize\.css$/g,
+                cssProcessor: require('cssnano'),
+                cssProcessorOptions: { discardComments: {removeAll: true } },
+                canPrint: true
+            })
         ],
         entry: [
             'whatwg-fetch',
