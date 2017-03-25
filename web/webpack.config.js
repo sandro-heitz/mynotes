@@ -103,6 +103,7 @@ if (process.env.NODE_ENV == 'production') {
             extensions: ['*', '.js', '.jsx']
         },
         plugins: [
+            new webpack.NamedModulesPlugin(),
             new (webpack.optimize.OccurenceOrderPlugin || webpack.optimize.OccurrenceOrderPlugin)(),
             new webpack.HotModuleReplacementPlugin(),
             new webpack.NoEmitOnErrorsPlugin(),
@@ -112,6 +113,10 @@ if (process.env.NODE_ENV == 'production') {
                 template: './app/index-dev.html',
                 environment: process.env.NODE_ENV,
                 inject: false
+            }),
+            new CleanWebpackPlugin([ BUILD_DIR ], {
+                verbose: true,
+                dry: false,
             })
         ],
         entry: [
