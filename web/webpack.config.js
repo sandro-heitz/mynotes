@@ -4,6 +4,7 @@ const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 
 const BUILD_DIR = path.resolve(__dirname, 'public');
 const APP_DIR = path.resolve(__dirname, 'app');
@@ -50,6 +51,10 @@ if (process.env.NODE_ENV == 'production') {
                 cssProcessor: require('cssnano'),
                 cssProcessorOptions: { discardComments: {removeAll: true } },
                 canPrint: true
+            }),
+            new CleanWebpackPlugin([ BUILD_DIR ], {
+                verbose: true,
+                dry: false,
             })
         ],
         entry: [
