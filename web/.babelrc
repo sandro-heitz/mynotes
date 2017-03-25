@@ -5,5 +5,11 @@
       "plugins": ["react-hot-loader/babel"]
     },
     "test": { "presets": [ "es2015" ] }
+    "production": {
+      "presets": [ [ "es2015", { "modules": false } ], "react", "stage-1" ]
+    },
+    "test": {
+      "presets": [ "es2015" ]
+    }
   }
 }
