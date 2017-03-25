@@ -14,7 +14,7 @@ class NotesPanel extends Component {
     }
     componentDidMount() {
         let self = this;
-        this.priv.fetchCall = makeCancelable(createGet('/rest/notes'));
+        this.priv.fetchCall = makeCancelable(createGet('rest/notes'));
         this.priv.fetchCall.promise.then(function(response) {
             if (response.status == 200) {
                 self.priv.jsonCall = makeCancelable(response.json());

@@ -1,0 +1,25 @@
+
+apply plugin: 'war'
+webAppDirName = 'dist'
+
+task copyAll(type:Copy) {
+     delete 'dist'
+     from(zipTree('./server/build/libs/mynotes.war'))
+     into 'dist'
+     from(fileTree('./web/public'))
+     into 'dist'
+}
+
+clean.dependsOn( ':server:clean', ':web:clean' )
+
+build.dependsOn( ':server:war', ':web:build', 'copyAll')
+
+copyAll.mustRunAfter(':server:war', ':web:build' )
+
+
+war.dependsOn('copyAll')
+
+war {
+    archiveName = 'mynotes.war'
+}
+

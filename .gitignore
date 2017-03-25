@@ -15,3 +15,7 @@ server/.gradle/
 server/.project
 web/public/
 web/.gradle/
+dist/
+build/
+.gradle/buildOutputCleanup/cache.properties.lock
+.gradle/

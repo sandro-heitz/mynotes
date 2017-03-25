@@ -1,4 +1,6 @@
 
+defaultTasks 'build'
+
 buildscript {
   repositories {
     maven {

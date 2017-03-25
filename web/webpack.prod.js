@@ -6,6 +6,11 @@ module.exports = function (cfg) {
             extensions: ['*', '.js', '.jsx']
         },
         plugins: [
+            new cfg.webpack.DefinePlugin({
+                'process.env': {
+                    NODE_ENV: JSON.stringify('production')
+                }
+            }),
             new cfg.webpack.optimize.UglifyJsPlugin({
                 beautify: false,
                 mangle: {
