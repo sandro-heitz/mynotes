@@ -1,6 +1,8 @@
 
 const path = require('path');
 const webpack = require('webpack');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+
 
 const BUILD_DIR = path.resolve(__dirname, 'public');
 const APP_DIR = path.resolve(__dirname, 'app');
@@ -21,18 +23,25 @@ let config = {
     plugins: [
         new (webpack.optimize.OccurenceOrderPlugin || webpack.optimize.OccurrenceOrderPlugin)(),
         new webpack.HotModuleReplacementPlugin(),
-        new webpack.NoEmitOnErrorsPlugin()
+        new webpack.NoEmitOnErrorsPlugin(),
+        new HtmlWebpackPlugin({
+            hash: false,
+            filename: 'index.html',
+            template: './app/index-dev.html',
+            environment: process.env.NODE_ENV,
+            inject: false
+        })
     ],
     entry: [
         'whatwg-fetch',
         'webpack-dev-server/client?http://localhost:3000',
         'webpack/hot/only-dev-server',
         'react-hot-loader/patch',
-        APP_DIR + '/index.js'
+        APP_DIR + '/index-dev.js'
     ],
     output: {
         path: BUILD_DIR,
-        filename:  'bundle.js'
+        filename:  'bundle-dev.js'
     },
     module: {
         rules: [
