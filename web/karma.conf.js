@@ -12,7 +12,7 @@ module.exports = function(config) {
         preprocessors: {
             './karma.tests.js': [ 'webpack' ] //preprocess with webpack and our sourcemap loader
         },
-        reporters: ['dots'],
+        reporters: ['dots', 'coverage-istanbul'],
         webpack: webpackConfig,
         webpackMiddleware: {
             stats: "none"

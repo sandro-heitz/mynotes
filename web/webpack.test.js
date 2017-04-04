@@ -34,7 +34,7 @@ module.exports = function (cfg) {
                 {
                     test: /\.js?/,
                     include: [ cfg.APP_DIR, cfg.TEST_DIR ],
-                    use: ['babel-loader' ]
+                    use: ['istanbul-instrumenter-loader', 'babel-loader' ]
                 }
 
             ]
