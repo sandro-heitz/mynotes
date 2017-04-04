@@ -18,9 +18,13 @@ module.exports = function(config) {
             reporters: [
                 {
                     type: 'html',
-                    subdir: '.'
-                }]
-
+                    subdir: 'html'
+                },
+                {
+                    type: 'cobertura',
+                    subdir: 'cobertura'
+                }
+            ]
         },
         webpack: webpackConfig,
         webpackMiddleware: {
