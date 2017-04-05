@@ -1,4 +1,6 @@
 
+defaultTasks 'war'
+
 apply plugin: 'war'
 webAppDirName = 'dist'
 
@@ -12,9 +14,9 @@ task copyAll(type:Copy) {
 
 clean.dependsOn( ':server:clean', ':web:clean' )
 
-build.dependsOn( ':server:war', ':web:build', 'copyAll')
+build.dependsOn( ':server:war', ':web:build' )
 
-copyAll.mustRunAfter(':server:war', ':web:build' )
+copyAll.dependsOn('server:war', 'web:build' )
 
 
 war.dependsOn('copyAll')
