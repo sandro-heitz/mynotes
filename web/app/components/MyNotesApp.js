@@ -4,6 +4,10 @@ import HeaderPanel from './HeaderPanel';
 import ImagePanel from './ImagePanel';
 import NotesPanel from './notes/NotesPanel';
 
+import Whiteboard from './../common/whiteboard';
+
+Window.whiteboard = Whiteboard;
+
 class MyNotesApp extends Component {
 
     render() {
@@ -14,7 +18,7 @@ class MyNotesApp extends Component {
                 </div>
                 <div className="col-xs-12 col-sm-10">
                     <HeaderPanel />
-                    <NotesPanel />
+                    <NotesPanel freezer={Whiteboard} />
                 </div>
             </div>
         </div>);

@@ -46,6 +46,7 @@
   "dependencies": {
     "bootstrap": "3.3.7",
     "es6-promise": "4.1.0",
+    "freezer-js": "^0.11.2",
     "react": "15.4.2",
     "react-dom": "15.4.2",
     "react-i18nify": "1.8.4",
