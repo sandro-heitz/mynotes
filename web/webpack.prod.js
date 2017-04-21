@@ -23,13 +23,24 @@ module.exports = function (cfg) {
                 comments: false
             }),
             new (cfg.webpack.optimize.OccurenceOrderPlugin || cfg.webpack.optimize.OccurrenceOrderPlugin)(),
+
             new cfg.HtmlWebpackPlugin({
                 hash: false,
+                chunks: ['signin'],
+                filename: 'signin.html',
+                template: './app/signin-prod.html',
+                environment: process.env.NODE_ENV,
+                inject: 'body'
+            }),
+            new cfg.HtmlWebpackPlugin({
+                hash: false,
+                chunks: ['index'],
                 filename: 'index.html',
                 template: './app/index-prod.html',
                 environment: process.env.NODE_ENV,
                 inject: 'body'
             }),
+
             new cfg.ExtractTextPlugin("styles.[contenthash].css"),
             new cfg.OptimizeCssAssetsPlugin({
                 //assetNameRegExp: /\.optimize\.css$/g,
@@ -42,13 +53,19 @@ module.exports = function (cfg) {
                 dry: false,
             })
         ],
-        entry: [
-            'whatwg-fetch',
-            cfg.APP_DIR + '/index-prod.js'
-        ],
+        entry: {
+            signin: [
+                'whatwg-fetch',
+                cfg.APP_DIR + '/signin-prod.js'
+            ],
+            index: [
+                'whatwg-fetch',
+                cfg.APP_DIR + '/index-prod.js'
+            ]
+        },
         output: {
             path: cfg.BUILD_DIR,
-            filename: 'bundle-prod.[hash].js'
+            filename: '[name]-prod.[hash].js'
         },
         module: {
             rules: [

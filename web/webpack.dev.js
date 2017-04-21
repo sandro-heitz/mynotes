@@ -10,28 +10,46 @@ module.exports = function (cfg) {
             new (cfg.webpack.optimize.OccurenceOrderPlugin || cfg.webpack.optimize.OccurrenceOrderPlugin)(),
             new cfg.webpack.HotModuleReplacementPlugin(),
             new cfg.webpack.NoEmitOnErrorsPlugin(),
+
             new cfg.HtmlWebpackPlugin({
+                chunks: ['signin'],
+                hash: false,
+                filename: 'signin.html',
+                template: './app/signin-dev.html',
+                environment: process.env.NODE_ENV,
+                inject: false
+            }),
+            new cfg.HtmlWebpackPlugin({
+                chunks: ['index'],
                 hash: false,
                 filename: 'index.html',
                 template: './app/index-dev.html',
                 environment: process.env.NODE_ENV,
                 inject: false
             }),
+
             new cfg.CleanWebpackPlugin([cfg.BUILD_DIR], {
                 verbose: true,
                 dry: false,
             })
         ],
-        entry: [
-            'whatwg-fetch',
-            'webpack-dev-server/client?http://localhost:3000',
-            'webpack/hot/only-dev-server',
-            'react-hot-loader/patch',
-            cfg.APP_DIR + '/index-dev.js'
-        ],
+        entry: {
+            signin: [
+                'whatwg-fetch',
+                'webpack-dev-server/client?http://localhost:3000',
+                'webpack/hot/only-dev-server',
+                'react-hot-loader/patch',
+                cfg.APP_DIR + '/signin-dev.js'],
+            index: [
+                'whatwg-fetch',
+                'webpack-dev-server/client?http://localhost:3000',
+                'webpack/hot/only-dev-server',
+                'react-hot-loader/patch',
+                cfg.APP_DIR + '/index-dev.js']
+        },
         output: {
             path: cfg.BUILD_DIR,
-            filename: 'bundle-dev.js'
+            filename: '[name]-dev.js'
         },
         module: {
             rules: [
