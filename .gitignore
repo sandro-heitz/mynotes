@@ -19,4 +19,3 @@ dist/
 build/
 .gradle/buildOutputCleanup/cache.properties.lock
 .gradle/
-web/coverage/

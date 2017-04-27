@@ -2,7 +2,7 @@
 // http://chaijs.com/
 import chai from 'chai';
 
-import { getParameterByName } from '../../app/common/utils';
+import { getParameterByName } from '../app/common/utils';
 
 let should = chai.should();
 let expect = chai.expect;

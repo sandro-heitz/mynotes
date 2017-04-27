@@ -10,7 +10,6 @@ cfg.CleanWebpackPlugin = require('clean-webpack-plugin');
 
 cfg.BUILD_DIR = cfg.path.resolve(__dirname, 'public');
 cfg.APP_DIR = cfg.path.resolve(__dirname, 'app');
-cfg.TEST_DIR = cfg.path.resolve(__dirname, 'test');
 cfg.BOOTSTRAP_DIR = cfg.path.resolve(__dirname, './node_modules/bootstrap');
 cfg.CSS_DIRS = [ cfg.APP_DIR, cfg.BOOTSTRAP_DIR ];
 cfg.INLINE_IMAGES_DIR = cfg.path.resolve(__dirname, 'app/images/inline');
@@ -25,8 +24,6 @@ console.log("arg env [" + cfg.env + ']');
 
 if (cfg.env == 'production') {
     config = require('./webpack.prod')(cfg);
-} else if (cfg.env == 'test') {
-    config = require('./webpack.test')(cfg);
 } else {
     config = config = require('./webpack.dev')(cfg);
 }
