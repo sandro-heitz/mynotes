@@ -34,9 +34,7 @@
   },
   "scripts": {
     "clean": "rm -rf public",
-    "watch": "cross-env NODE_ENV=development webpack -d --watch --progress",
     "build": "cross-env NODE_ENV=production webpack",
-    "serve": "serve --port 3000 ./public",
     "test": "cross-env NODE_ENV=test karma start",
     "mocha": "cross-env NODE_ENV=test mocha --recursive --compilers js:babel-core/register",
     "mocha:watch": "cross-env NODE_ENV=test mocha -w --recursive --compilers js:babel-core/register",
@@ -49,6 +47,8 @@
     "react": "15.4.2",
     "react-dom": "15.4.2",
     "react-i18nify": "1.8.4",
+    "react-redux": "5.0.4",
+    "redux": "3.6.0",
     "velocity-animate": "1.4.3",
     "whatwg-fetch": "2.0.3"
   }

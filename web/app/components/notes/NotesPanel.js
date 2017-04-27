@@ -1,7 +1,7 @@
 
 import React, { Component } from 'react';
 import NoteForm from './NoteForm';
-import NotesList from './NotesList';
+import NotesListConnector from './NotesListConnector';
 import { makeCancelable, createGet } from '../../common/utils';
 
 class NotesPanel extends Component {
@@ -49,7 +49,7 @@ class NotesPanel extends Component {
     render() {
         return (<div>
             <NoteForm addNote={this.addNote} />
-            <NotesList notes={this.state.notes} />
+            <NotesListConnector />
         </div>);
     }
 }

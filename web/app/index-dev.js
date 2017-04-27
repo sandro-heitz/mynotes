@@ -4,15 +4,18 @@ import mainStyles from './css/main.css';
 import React from 'react';
 import ReactDOM from 'react-dom'
 import { AppContainer } from 'react-hot-loader';
-import { initI18N } from './i18n/i18n';
+import { Provider } from 'react-redux'
+import { createStore } from 'redux'
 import MyNotesApp from './components/MyNotesApp';
+import notesApp from './reducers'
 import { polyfill } from 'es6-promise';
 
 polyfill();
-initI18N(window.location.href);
+
+let store = createStore(notesApp)
 
 const render = Component => {
-    ReactDOM.render(<AppContainer>< Component /></AppContainer>, document.getElementById('app'));
+    ReactDOM.render(<AppContainer><Provider store={store} >< Component xhref={window.location.href} /></Provider></AppContainer>, document.getElementById('app'));
 }
 
 render(MyNotesApp);
