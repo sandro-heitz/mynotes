@@ -4,23 +4,19 @@ import mainStyles from './css/main.css';
 import React from 'react';
 import ReactDOM from 'react-dom'
 import { AppContainer } from 'react-hot-loader';
-import { Provider } from 'react-redux'
-import { createStore } from 'redux'
-import MyNotesApp from './components/MyNotesApp';
-import notesApp from './reducers'
+import MyNotesWrapper from './MyNotesWrapper';
+
 import { polyfill } from 'es6-promise';
 
 polyfill();
 
-let store = createStore(notesApp)
-
 const render = Component => {
-    ReactDOM.render(<AppContainer><Provider store={store} >< Component xhref={window.location.href} /></Provider></AppContainer>, document.getElementById('app'));
+    ReactDOM.render(<AppContainer>< Component xhref={window.location.href} /></AppContainer>, document.getElementById('app'));
 }
 
-render(MyNotesApp);
+render(MyNotesWrapper);
 
 if (module.hot) {
-    module.hot.accept('./components/MyNotesApp', () => render(MyNotesApp));
+    module.hot.accept('./MyNotesWrapper', () => render(MyNotesWrapper));
 }
 

@@ -1,12 +1,16 @@
 
 import React, { Component } from 'react';
 import { I18n } from 'react-i18nify';
+import { addNote } from '../../actions';
+import { connect } from 'react-redux'
 
 const INITIAL_STATE = {ok: false, changed: false };
 
 class NoteForm extends Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
+        console.log('props');
+        console.log(props);
         this.state = INITIAL_STATE;
     }
     componentDidMount() {
@@ -25,11 +29,12 @@ class NoteForm extends Component {
         this._focus();
     }
     _handleOk = (e) => {
+        let { dispatch } = this.props;
         e.preventDefault();
         let note = { title: this._title.value, description: this._description.value };
         this._reset();
         this._focus();
-        this.props.addNote(note);
+        dispatch(addNote(note));
     }
     _reset() {
         this._title.value = '';
@@ -72,4 +77,4 @@ class NoteForm extends Component {
     }
 }
 
-export default NoteForm;
+export default connect()(NoteForm);

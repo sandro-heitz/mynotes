@@ -1,12 +1,8 @@
 
-let nextNoteId = 0
-
-export const addNote = (title, description) => {
+export const addNote = (note) => {
     return {
-        type: 'ADD_TODO',
-        id: nextNoteId++,
-        title,
-        description
+        type: 'ADD_NOTE',
+        note
     }
 }
 
