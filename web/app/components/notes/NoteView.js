@@ -18,14 +18,14 @@ class NoteView extends Component {
         let style = { opacity: '0', backgroundColor: '#FF8533'};
         //
         return (<div className="note-view" ref={(n) => { this.noteView = n }} style={style}>
-            <p>{this.props.number}</p>
+
             <h3>{this.props.note.title}</h3>
             <div className="row">
                 <div className="hidden-xs col-sm-4">
                     {I18n.t('form.description')}
                 </div>
                 <div className="col-xs-12 col-sm-8">
-                    <p style={{color: 'white', backgroundColor: '#333', padding: '5px'}} dangerouslySetInnerHTML={{__html: desc}}></p>
+                    <p style={{color: 'white', backgroundColor: '#999', padding: '5px'}} dangerouslySetInnerHTML={{__html: desc}}></p>
                 </div>
             </div>
         </div>);

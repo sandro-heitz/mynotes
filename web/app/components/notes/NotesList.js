@@ -8,7 +8,7 @@ const NotesList = ({ notes }) => {
     return <div className="notes-list">{
         notes.map(n => {
             nr++;
-            return <NoteView number={nr} note={n} key={n.id}/>
+            return <NoteView note={n} key={n.id}/>
         })
     }</div>
 }
